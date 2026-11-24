@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "HN Dark",
+  "version": "1.0.0",
+  "description": "Dark theme for Hacker News, applied before the page renders.",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://news.ycombinator.com/*"
+      ],
+      "css": [
+        "hn-dark.css"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}

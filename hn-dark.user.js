@@ -15,7 +15,7 @@
   // false = always dark
   const FOLLOW_SYSTEM_THEME = false;
 
-  // Contrast ratios (WCAG) are measured against --hn-surface (#1b1b1b).
+  // Inlined from extension/hn-dark.css by scripts/sync-userscript-css.mjs.
   const css = `
 :root {
   --hn-bg:      #111111;  /* page edges outside the main table */
@@ -139,7 +139,6 @@ input[readonly] {
     ? `@media (prefers-color-scheme: dark) {${css}}`
     : css;
 
-  // At document-start <head> may not exist yet; <html> always does.
-  // Injecting this early avoids a white flash before the theme applies.
+  // Insert as soon as the manager runs the script, without waiting for <head>.
   (document.head || document.documentElement).appendChild(style);
 })();
